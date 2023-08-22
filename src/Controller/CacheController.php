@@ -28,7 +28,7 @@ class CacheController extends AbstractController
     {
         return new JsonResponse(
             [
-                'probablistic_cache_value' => $this->cacheService->getProbabilisticCached('probablistic_cache_key'),
+                'probablistic_cache_value' => $this->cacheService->getProbabilisticCachedValue('probablistic_cache_key'),
             ]
         );
     }

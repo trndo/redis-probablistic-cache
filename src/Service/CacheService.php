@@ -25,7 +25,7 @@ readonly class CacheService
         return (int) $value;
     }
 
-    public function getProbabilisticCached(string $key, int $ttl = 60, float $beta = 1): int
+    public function getProbabilisticCachedValue(string $key, int $ttl = 60, float $beta = 1): int
     {
         $cachedValue = (array) $this->redisClient->hGetAll($key);
         $value = $cachedValue['value'] ?? null;
