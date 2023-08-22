@@ -25,6 +25,9 @@ Tests were performed with `siege` tool
 ```
 
 2. Probablistic cache function
+
+`siege -b -v --time="120s" -c="10" http://localhost:4601/probablistic-cache`
+
 ```json
 "transactions":            29705,
 "availability":            100.00,
@@ -62,14 +65,14 @@ The probabilistic cache functions decrease number of cache stampedes, decrease n
 
 * add keys - values with concrete ttl
 * try to get some keys to receive values **for one time each**
-* * write more keys with values
+* write more keys with values
 * **Result:** Redis removes least frequently used keys
 
 4. ``maxmemory-policy allkeys-lfu``
 
 * add keys - values with concrete ttl
 * try to get some keys to receive values **for one time each**
-* * write more keys with values
+* write more keys with values
 * **Result:** Redis removes least frequently used and keeps frequently used keys
 
 5. ``maxmemory-policy volitile-random``
@@ -77,7 +80,7 @@ The probabilistic cache functions decrease number of cache stampedes, decrease n
 * add keys - values with concrete ttl
 * try to get some keys to receive values **for more than 50 times each**
 * try to get some keys to receive values **for one time each**
-* * write more keys with values
+* write more keys with values
 * **Result:** Redis randomly removes keys
 
 6. ``maxmemory-policy allkeys-random``
@@ -85,14 +88,14 @@ The probabilistic cache functions decrease number of cache stampedes, decrease n
 * add keys - values
 * try to get some keys to receive values **for more than 50 times each**
 * try to get some keys to receive values **for one time each**
-* * write more keys with values
+* write more keys with values
 * **Result:** Redis randomly removes keys to make space for the new data
 
 7. ``maxmemory-policy volitile-ttl``
 
 * add keys - values with different ttl
 * try to get some keys to receive values **for one time each**
-* * write more keys with values
+* write more keys with values
 * **Result:** Redis removes keys with shortest remaining time-to-live
 
 8. ``maxmemory-policy noeviction``
